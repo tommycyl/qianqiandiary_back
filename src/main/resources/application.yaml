@@ -4,9 +4,9 @@ spring:
 
   # 数据库配置
   datasource:
-    url: jdbc:mysql://dbprovider.ap-southeast-1.clawcloudrun.com:49533/mydb
+    url: 
     username: root
-    password: xm4ftgvh
+    password: 
     driver-class-name: com.mysql.cj.jdbc.Driver
     # 数据库初始化配置
     initialization-mode: always
@@ -89,5 +89,5 @@ management:
 
 wx:
   miniprogram:
-    appid: "wx133c97b0ff326d2d"
-    secret: "44eff3b3cfd895d3ab0099dc1d31c427"
+    appid: ""
+    secret: ""
