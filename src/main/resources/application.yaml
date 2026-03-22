@@ -1,0 +1,93 @@
+spring:
+  application:
+    name: yeefstore
+
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://dbprovider.ap-southeast-1.clawcloudrun.com:49533/mydb
+    username: root
+    password: xm4ftgvh
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 数据库初始化配置
+    initialization-mode: always
+    # Hikari 连接池配置
+    hikari:
+      pool-name: WJHikariCP
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 180000     # 3分钟
+      max-lifetime: 1800000    # 30分钟
+      connection-timeout: 30000 # 30秒
+      auto-commit: true
+
+  # JPA / Hibernate 配置
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    # properties:
+    #   hibernate:
+    #     format_sql: true
+
+  # Redis 配置
+  redis:
+    # host: 124.222.59.109
+    # port: 6379
+    database: 0
+    password: # 请在此处填入你的Redis密码
+    timeout: 2000
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1
+
+  # 禁用 Redis Repository 自动配置
+  data:
+    redis:
+      repositories:
+        enabled: false
+
+  # 静态资源处理
+  mvc:
+    static-path-pattern: /**
+  web:
+    resources:
+      static-locations:
+        - classpath:/META-INF/resources/
+        - classpath:/resources/
+        - classpath:/static/
+        - classpath:/public/
+
+# 服务器配置
+server:
+  port: 8443
+  # 开启 Gzip 压缩
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types:
+      - application/json
+      - application/xml
+      - text/html
+      - text/xml
+      - text/plain
+      - application/javascript
+      - text/css
+
+# 监控与健康检查 (Actuator)
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: env
+
+wx:
+  miniprogram:
+    appid: "wx133c97b0ff326d2d"
+    secret: "44eff3b3cfd895d3ab0099dc1d31c427"
